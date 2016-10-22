@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CoderNYT</string>
+    <string name="new_article_Search">Search Article</string>
+    <string name="filter">Filter</string>
 </resources>
