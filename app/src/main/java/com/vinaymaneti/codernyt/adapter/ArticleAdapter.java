@@ -8,6 +8,8 @@ import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -21,6 +23,7 @@ import android.widget.FrameLayout;
 
 import com.bumptech.glide.Glide;
 import com.vinaymaneti.codernyt.R;
+import com.vinaymaneti.codernyt.activity.DetailArticleActivity;
 import com.vinaymaneti.codernyt.activity.SearchActivity;
 import com.vinaymaneti.codernyt.model.Article;
 import com.vinaymaneti.codernyt.model.Multimedia;
@@ -161,7 +164,13 @@ public class ArticleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 exploreArticleInWebView(article);
             }
         });
-//        holder.frameLayout.setOnClickListener(this);
+        holder.frameLayout.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+            @Override
+            public void onClick(View v) {
+                moveToDetailActivity(article);
+            }
+        });
     }
 
     private void shareArticle(Article article) {
@@ -201,6 +210,12 @@ public class ArticleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     private void bindNoImage(final Article article, NoImageViewHolder holder, int randomAndroidColor) {
         holder.onlyTextSnippet.setBackgroundColor(randomAndroidColor);
+        holder.onlyTextSnippet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveToDetailActivity(article);
+            }
+        });
         holder.onlyTextSnippet.setText(article.getSnippet());
         holder.shareIv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -214,6 +229,12 @@ public class ArticleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 exploreArticleInWebView(article);
             }
         });
+    }
+
+    private void moveToDetailActivity(Article article) {
+        Intent intent = new Intent(mContext, DetailArticleActivity.class);
+        intent.putExtra("article", article);
+        mContext.startActivity(intent);
     }
 
     public static Bitmap drawableToBitmap(Drawable drawable) {
