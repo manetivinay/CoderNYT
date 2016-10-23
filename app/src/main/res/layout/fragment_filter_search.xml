@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:gravity="center"
+                android:padding="16dp">
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/filterTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Filter"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold"/>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/cancelBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_cancel"/>
+
+    <View
+        android:id="@+id/horizontalView"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/cancelBtn"
+        android:layout_marginTop="10dp"
+        android:background="#c0c0c0"/>
+
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/sortTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/horizontalView"
+        android:layout_marginTop="10dp"
+        android:text="Sort"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold"/>
+
+
+    <RadioGroup
+        android:id="@+id/radioPriority"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sortTv"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.AppCompatRadioButton
+            android:id="@+id/newestRb"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="Newest"/>
+
+        <android.support.v7.widget.AppCompatRadioButton
+            android:id="@+id/oldestRb"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:text="Oldest"/>
+    </RadioGroup>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/favourites"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/radioPriority"
+        android:layout_marginTop="10dp"
+        android:text="Choose your Favourites"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold"/>
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/artsCbx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/favourites"
+        android:layout_marginTop="10dp"
+        android:text="Arts"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/fAndSCbx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/artsCbx"
+        android:text="Fashion and Style"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/sportsCbx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fAndSCbx"
+        android:text="Sports"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/between"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sportsCbx"
+        android:layout_marginTop="10dp"
+        android:text="Between Date"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold"/>
+
+
+    <RelativeLayout
+        android:id="@+id/startDateView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/between">
+
+        <View
+            android:id="@+id/dateCenterShim"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/startDateTv"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/colorAccent"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/startDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/dateCenterShim"
+            android:layout_marginTop="10dp"
+            android:text="Start Date"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/startDateTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/dateCenterShim"
+            android:layout_marginTop="10dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            tools:text="23 Oct 2016"/>
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/endDateView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/startDateView">
+
+
+        <View
+            android:id="@+id/endCenterShim"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/endDateTv"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/colorAccent"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/endDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/endCenterShim"
+            android:layout_marginTop="10dp"
+            android:text="End Date"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/endDateTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/endCenterShim"
+            android:layout_marginTop="10dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            tools:text="29 Oct 2016"/>
+
+
+    </RelativeLayout>
+
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/searchBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/endDateView"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorAccent"
+        android:text="Search"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/white"/>
+
+
+</RelativeLayout>

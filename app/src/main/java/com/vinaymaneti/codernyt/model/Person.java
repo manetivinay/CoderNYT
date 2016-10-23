@@ -15,6 +15,8 @@ public class Person {
     private Integer rank;
     @SerializedName("lastname")
     private String lastname;
+    @SerializedName("middlename")
+    private String middleName;
 
     /**
      * 

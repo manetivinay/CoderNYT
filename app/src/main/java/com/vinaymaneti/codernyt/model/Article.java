@@ -37,8 +37,8 @@ public class Article {
     private String sectionName;
     @SerializedName("subsection_name")
     private Object subsectionName;
-    @SerializedName("byline")
-    private Byline byline;
+//    @SerializedName("byline")
+//    private Byline byline;
     @SerializedName("type_of_material")
     private String typeOfMaterial;
     @SerializedName("_id")
@@ -252,19 +252,19 @@ public class Article {
         this.subsectionName = subsectionName;
     }
 
-    /**
-     * @return The byline
-     */
-    public Byline getByline() {
-        return byline;
-    }
-
-    /**
-     * @param byline The byline
-     */
-    public void setByline(Byline byline) {
-        this.byline = byline;
-    }
+//    /**
+//     * @return The byline
+//     */
+//    public Byline getByline() {
+//        return byline;
+//    }
+//
+//    /**
+//     * @param byline The byline
+//     */
+//    public void setByline(Byline byline) {
+//        this.byline = byline;
+//    }
 
     /**
      * @return The typeOfMaterial

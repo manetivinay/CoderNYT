@@ -1,6 +1,7 @@
 package com.vinaymaneti.codernyt.activity;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -16,6 +17,7 @@ import android.widget.RelativeLayout;
 import com.vinaymaneti.codernyt.R;
 import com.vinaymaneti.codernyt.adapter.ArticleAdapter;
 import com.vinaymaneti.codernyt.api.ArticleApi;
+import com.vinaymaneti.codernyt.fragment.FilterArticleFragment;
 import com.vinaymaneti.codernyt.model.SearchRequest;
 import com.vinaymaneti.codernyt.model.SearchResult;
 import com.vinaymaneti.codernyt.util.RetrofitUtils;
@@ -166,9 +168,16 @@ public class SearchActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_sort:
+                showFilterDialog();
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void showFilterDialog() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FilterArticleFragment filterArticleFragment = new FilterArticleFragment();
+        filterArticleFragment.show(fragmentManager, "filter_article");
     }
 
     @Override
