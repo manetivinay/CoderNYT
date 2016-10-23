@@ -49,4 +49,6 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     compile 'com.wdullaer:materialdatetimepicker:2.5.0'
+    compile 'com.android.support:customtabs:24.0.0+'
+    compile 'jp.wasabeef:recyclerview-animators:2.2.3'
 }

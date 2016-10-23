@@ -1,13 +1,16 @@
 
 package com.vinaymaneti.codernyt.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
 import static com.vinaymaneti.codernyt.util.Constants.KEY_BASE_IMAGE_URL;
 
-public class Multimedia implements Serializable {
+public class Multimedia implements Parcelable {
 
     @SerializedName("width")
     private Integer width;
@@ -30,6 +33,27 @@ public class Multimedia implements Serializable {
     @SerializedName("caption")
     private String caption;
 
+
+    protected Multimedia(Parcel in) {
+        url = in.readString();
+        subtype = in.readString();
+        type = in.readString();
+        credit = in.readString();
+        rank = in.readString();
+        caption = in.readString();
+    }
+
+    public static final Creator<Multimedia> CREATOR = new Creator<Multimedia>() {
+        @Override
+        public Multimedia createFromParcel(Parcel in) {
+            return new Multimedia(in);
+        }
+
+        @Override
+        public Multimedia[] newArray(int size) {
+            return new Multimedia[size];
+        }
+    };
 
     /**
      * @return The width
@@ -124,4 +148,18 @@ public class Multimedia implements Serializable {
         this.type = type;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(url);
+        dest.writeString(subtype);
+        dest.writeString(type);
+        dest.writeString(credit);
+        dest.writeString(rank);
+        dest.writeString(caption);
+    }
 }

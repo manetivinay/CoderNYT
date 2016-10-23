@@ -1,9 +1,12 @@
 
 package com.vinaymaneti.codernyt.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class Headline {
+public class Headline implements Parcelable{
 
     @SerializedName("main")
     private String main;
@@ -30,4 +33,13 @@ public class Headline {
         this.main = main;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
+    }
 }

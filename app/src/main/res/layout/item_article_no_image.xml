@@ -8,20 +8,57 @@
     android:layout_margin="4dp"
     android:foreground="?attr/selectableItemBackground"
     android:orientation="vertical"
+    card_view:cardCornerRadius="3dp"
     card_view:cardElevation="6dp"
     card_view:contentPadding="2dp"
-    card_view:cardCornerRadius="3dp"
     tools:layout_width="200dp">
 
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/onlyTextSnippet"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="7"
-        android:padding="4dp"
-        android:textColor="@android:color/black"
-        android:textSize="14sp"
-        tools:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"/>
+        android:orientation="vertical">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/onlyTextSnippet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="7"
+            android:padding="4dp"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            tools:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/dateCenterShim"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/explore"
+                android:layout_centerHorizontal="true"
+                android:visibility="invisible"/>
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/share"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@id/dateCenterShim"
+                android:gravity="center"
+                android:padding="5dp"
+                android:src="@drawable/ic_share"/>
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/explore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/dateCenterShim"
+                android:gravity="center"
+                android:padding="5dp"
+                android:src="@drawable/ic_internet_explorer"/>
+        </RelativeLayout>
+    </LinearLayout>
 
 </android.support.v7.widget.CardView>

@@ -1,12 +1,15 @@
 
 package com.vinaymaneti.codernyt.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Article {
+public class Article implements Parcelable {
     @SerializedName("web_url")
     private String webUrl;
     @SerializedName("snippet")
@@ -37,8 +40,6 @@ public class Article {
     private String sectionName;
     @SerializedName("subsection_name")
     private Object subsectionName;
-//    @SerializedName("byline")
-//    private Byline byline;
     @SerializedName("type_of_material")
     private String typeOfMaterial;
     @SerializedName("_id")
@@ -47,6 +48,35 @@ public class Article {
     private Object wordCount;
     @SerializedName("slideshow_credits")
     private Object slideshowCredits;
+
+
+    protected Article(Parcel in) {
+        webUrl = in.readString();
+        snippet = in.readString();
+        leadParagraph = in.readString();
+        source = in.readString();
+        multimedia = in.createTypedArrayList(Multimedia.CREATOR);
+        headline = in.readParcelable(Headline.class.getClassLoader());
+        keywords = in.createTypedArrayList(Keyword.CREATOR);
+        pubDate = in.readString();
+        documentType = in.readString();
+        newsDesk = in.readString();
+        sectionName = in.readString();
+        typeOfMaterial = in.readString();
+        id = in.readString();
+    }
+
+    public static final Creator<Article> CREATOR = new Creator<Article>() {
+        @Override
+        public Article createFromParcel(Parcel in) {
+            return new Article(in);
+        }
+
+        @Override
+        public Article[] newArray(int size) {
+            return new Article[size];
+        }
+    };
 
     /**
      * @return The webUrl
@@ -320,5 +350,27 @@ public class Article {
      */
     public void setSlideshowCredits(Object slideshowCredits) {
         this.slideshowCredits = slideshowCredits;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(webUrl);
+        dest.writeString(snippet);
+        dest.writeString(leadParagraph);
+        dest.writeString(source);
+        dest.writeTypedList(multimedia);
+        dest.writeParcelable(headline, flags);
+        dest.writeTypedList(keywords);
+        dest.writeString(pubDate);
+        dest.writeString(documentType);
+        dest.writeString(newsDesk);
+        dest.writeString(sectionName);
+        dest.writeString(typeOfMaterial);
+        dest.writeString(id);
     }
 }

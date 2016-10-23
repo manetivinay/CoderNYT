@@ -1,9 +1,12 @@
 
 package com.vinaymaneti.codernyt.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class Person {
+public class Person implements Parcelable{
 
     @SerializedName("organization")
     private String organization;
@@ -17,6 +20,26 @@ public class Person {
     private String lastname;
     @SerializedName("middlename")
     private String middleName;
+
+    protected Person(Parcel in) {
+        organization = in.readString();
+        role = in.readString();
+        firstname = in.readString();
+        lastname = in.readString();
+        middleName = in.readString();
+    }
+
+    public static final Creator<Person> CREATOR = new Creator<Person>() {
+        @Override
+        public Person createFromParcel(Parcel in) {
+            return new Person(in);
+        }
+
+        @Override
+        public Person[] newArray(int size) {
+            return new Person[size];
+        }
+    };
 
     /**
      * 
@@ -108,4 +131,17 @@ public class Person {
         this.lastname = lastname;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(organization);
+        dest.writeString(role);
+        dest.writeString(firstname);
+        dest.writeString(lastname);
+        dest.writeString(middleName);
+    }
 }
