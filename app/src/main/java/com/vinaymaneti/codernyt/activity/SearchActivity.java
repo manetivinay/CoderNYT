@@ -28,7 +28,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity implements FilterArticleFragment.OnFilterSearchListener {
     private static final String TAG = SearchActivity.class.getSimpleName();
     private SearchRequest mSearchRequest;
     private ArticleApi mArticleApi;
@@ -45,6 +45,34 @@ public class SearchActivity extends AppCompatActivity {
     ProgressBar pbLoadMore;
 
     private SearchView mSearchView;
+    private String order = null, beginDate = null, endDate = null;
+    private boolean hasArts = false;
+    private boolean hasFashionAndStyle = false;
+    private boolean hasSports = false;
+
+    @Override
+    public void onFilterComplete(final String order, final boolean hasArts, final boolean hasFashionAndStyle, final boolean hasSports, final String beginDate, String endDate) {
+        this.order = order;
+        this.hasArts = hasArts;
+        this.hasFashionAndStyle = hasFashionAndStyle;
+        this.hasSports = hasSports;
+        this.beginDate = beginDate;
+        this.endDate = endDate;
+        mSearchRequest.setOrder(order);
+        mSearchRequest.setHasArt(hasArts);
+        mSearchRequest.setHasFashionAndStyle(hasFashionAndStyle);
+        mSearchRequest.setHasSports(hasSports);
+        mSearchRequest.setBeginDate(beginDate.replace("-", "").trim());
+        fetchArticles(new Listener() {
+            @Override
+            public void onResult(SearchResult searchResult) {
+                mArticleAdapter.setArticles(searchResult.getArticles());
+                recyclerView.scrollToPosition(0);
+            }
+        });
+
+    }
+
 
     private interface Listener {
         void onResult(SearchResult searchResult);
@@ -142,11 +170,11 @@ public class SearchActivity extends AppCompatActivity {
                 return true;
             }
         });
-        setUpSearhView(menuItem);
+        setUpSearchView(menuItem);
         return super.onCreateOptionsMenu(menu);
     }
 
-    private void setUpSearhView(MenuItem menuItem) {
+    private void setUpSearchView(MenuItem menuItem) {
         mSearchView = (SearchView) MenuItemCompat.getActionView(menuItem);
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

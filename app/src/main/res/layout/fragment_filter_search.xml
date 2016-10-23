@@ -50,7 +50,7 @@
         android:layout_below="@id/sortTv"
         android:orientation="horizontal">
 
-        <android.support.v7.widget.AppCompatRadioButton
+        <RadioButton
             android:id="@+id/newestRb"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
             android:checked="true"
             android:text="Newest"/>
 
-        <android.support.v7.widget.AppCompatRadioButton
+        <RadioButton
             android:id="@+id/oldestRb"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

@@ -2,4 +2,5 @@
     <string name="app_name">CoderNYT</string>
     <string name="new_article_Search">Search Article</string>
     <string name="filter">Filter</string>
+    <string name="select_date">Select Date</string>
 </resources>
